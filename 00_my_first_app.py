@@ -20,6 +20,7 @@ def init_page():
     )
     st.sidebar.title("Nav")
     st.session_state.costs = []
+    st.session_state.emb_model_name = "gpt-4"  # モデル名を適切なものに設定する
 
 
 def get_pdf_text():
