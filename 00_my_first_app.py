@@ -15,7 +15,7 @@ COLLECTION_NAME = "my_collection"
 
 def init_page():
     st.set_page_config(
-        page_title="Ask My PDF(s)",
+        page_title="PDFに質問しよう！",
         page_icon="🤗"
     )
     st.sidebar.title("Nav")
