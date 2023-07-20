@@ -69,20 +69,22 @@ def load_qdrant():
     collections = client.get_collections().collections
     collection_names = [collection.name for collection in collections]
 
-    # コレクションが存在しなければ作成
-    if COLLECTION_NAME not in collection_names:
-        # コレクションが存在しない場合、新しく作成します
-        client.create_collection(
-            collection_name=COLLECTION_NAME,
-            vectors_config=VectorParams(size=1536, distance=Distance.COSINE),
-        )
-        print('collection created')
+    # コレクションが存在する場合、それを削除
+    if COLLECTION_NAME in collection_names:
+        client.delete_collection(collection_name=COLLECTION_NAME)
+
+    # コレクションが存在しない場合、新しく作成します
+    client.create_collection(
+        collection_name=COLLECTION_NAME,
+        vectors_config=VectorParams(size=1536, distance=Distance.COSINE),
+    )
 
     return Qdrant(
         client=client,
         collection_name=COLLECTION_NAME, 
         embeddings=OpenAIEmbeddings()
     )
+
 
 
 def build_vector_store(pdf_text):
