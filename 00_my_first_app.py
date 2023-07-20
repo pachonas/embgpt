@@ -18,7 +18,7 @@ def init_page():
         page_title="PDFに質問しよう！",
         page_icon="🤗"
     )
-    st.sidebar.title("Nav")
+    st.sidebar.title("Menu")
     st.session_state.costs = []
     st.session_state.emb_model_name = "gpt-4"  # モデル名を適切なものに設定する
 
